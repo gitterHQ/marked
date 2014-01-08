@@ -10,7 +10,7 @@ var marked = require('..');
 function runStaticTest(file) {
   return function() {
     var engine = marked;
-    var fileName = path.join(__dirname, '../tests', file);
+    var fileName = path.join(__dirname, 'tests', file);
 
     var text = fs.readFileSync(fileName, 'utf8');
     var html = fs.readFileSync(fileName.replace(/[^.]+$/, 'html'), 'utf8');
@@ -25,7 +25,7 @@ function runStaticTest(file) {
 
 describe('static', function() {
   var list = fs
-    .readdirSync(path.join(__dirname, '../tests'))
+    .readdirSync(path.join(__dirname, 'tests'))
     .filter(function(file) {
       return path.extname(file) !== '.html';
     })

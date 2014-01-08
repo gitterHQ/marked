@@ -34,5 +34,7 @@
     "test": "node test",
     "bench": "node test --bench"
   },
-  "dependencies": {}
+  "dependencies": {
+    "xregexp": "~2.0.0"
+  }
 }
