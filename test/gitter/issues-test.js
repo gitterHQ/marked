@@ -79,7 +79,6 @@ describe('issues', function() {
     assert.equal(html, '<p>Deal with <a href="#" data-link-type="issue" data-issue="123" data-issue-repo="a/b" class="issue">a/b#123</a></p>\n');
   });
 
-
   it('should read multiple repo issues', function() {
     var text = 'Deal with a/b#123 #456 yeah';
     var options = getDefaultOptions();
