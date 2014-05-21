@@ -6,12 +6,11 @@ var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
-var marked = require('..');
+var marked = require('../..');
 
 function getDefaultOptions() {
   return { gfm: true, tables: true, sanitize: true, breaks: true, linkify: true };
 }
-
 
 describe('commit', function() {
   it('should read full commits', function() {
