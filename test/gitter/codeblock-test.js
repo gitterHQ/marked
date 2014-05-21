@@ -2,12 +2,11 @@ var assert = require('assert');
 var marked = require('../..');
 
 function gitterMarkdown(text) {
+  var options = { headerPrefix: 'test', gfm: true, tables: true, sanitize: true, breaks: true, linkify: true, skipComments: true };
 
   var lexer = new marked.Lexer(options);
 
   var tokens = lexer.lex(text);
-
-  var options = { headerPrefix: 'test', gfm: true, tables: true, sanitize: true, breaks: true, linkify: true, skipComments: true };
 
   var parser = new marked.Parser(options);
 

@@ -11,10 +11,6 @@ function getDefaultOptions() {
 
 function gitterMarkdown(text) {
 
-  var lexer = new marked.Lexer(options);
-
-  var tokens = lexer.lex(text);
-
   var options = {
     headerPrefix: 'test',
     gfm: true,
@@ -24,6 +20,11 @@ function gitterMarkdown(text) {
     linkify: true,
     skipComments: true
   };
+
+  var lexer = new marked.Lexer(options);
+
+  var tokens = lexer.lex(text);
+
 
   var parser = new marked.Parser(options);
 
