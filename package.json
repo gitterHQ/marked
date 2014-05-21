@@ -2,7 +2,7 @@
   "name": "marked",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
-  "version": "0.3.2",
+  "version": "0.2.10b",
   "main": "./lib/marked.js",
   "bin": "./bin/marked",
   "man": "./man/marked.1",
@@ -12,7 +12,6 @@
   "bugs": {
     "url": "http://github.com/chjj/marked/issues"
   },
-  "license": "MIT",
   "keywords": [
     "markdown",
     "markup",
@@ -27,11 +26,12 @@
     "markdown": "*",
     "showdown": "*",
     "robotskirt": "*",
+    "cli-color": "^0.3.2",
     "diff": "^1.0.8",
-    "cli-color": "^0.3.2"
+    "mocha": "^1.19.0"
   },
   "scripts": {
-    "test": "node test",
+    "test": "make test",
     "bench": "node test --bench"
   }
 }
