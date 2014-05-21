@@ -11,8 +11,7 @@ clean:
 	rm -f marked.min.js
 
 test:
-	./node_modules/.bin/mocha test/mocha/ -R spec
-	node test/
+	./node_modules/.bin/mocha test/gitter/ test/static.js -R spec
 
 bench:
 	@node test --bench
