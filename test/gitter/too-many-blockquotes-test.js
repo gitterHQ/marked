@@ -22,5 +22,4 @@ describe('links', function() {
     assert.strictEqual(a, '<blockquote>\n<p>hello punk</p>\n</blockquote>');
   });
 
-
 });

@@ -1,16 +1,14 @@
 {
-  "name": "marked",
+  "name": "gitter-marked",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
   "version": "0.4.1",
   "main": "./lib/marked.js",
-  "bin": "./bin/marked",
-  "man": "./man/marked.1",
-  "preferGlobal": true,
-  "repository": "git://github.com/chjj/marked.git",
-  "homepage": "https://github.com/chjj/marked",
+  "preferGlobal": false,
+  "repository": "git://github.com/gitterHQ/marked.git",
+  "homepage": "https://github.com/gitterHQ/marked",
   "bugs": {
-    "url": "http://github.com/chjj/marked/issues"
+    "url": "http://github.com/gitterHQ/marked/issues"
   },
   "keywords": [
     "markdown",
