@@ -49,4 +49,22 @@ describe('latext', function() {
     assert.equal(html, '<p>this is $-$lat\nex$-$</p>\n');
   });
 
+  it('should einsteins field equations', function() {
+    var text = '$$R_{\\mu \\nu} - {1 \\over 2}g_{\\mu \\nu}\\,R + g_{\\mu \\nu} \\Lambda = {8 \\pi G \\over c^4} T_{\\mu \\nu}$$';
+    var options = getDefaultOptions();
+
+    var lexer = new marked.Lexer(options);
+    var renderer = new marked.Renderer();
+    renderer.latex = function(x) {
+      return '$-$' + x + '$-$';
+    };
+    var tokens = lexer.lex(text);
+    options.renderer = renderer;
+
+    var parser = new marked.Parser(options);
+    var html = parser.parse(tokens);
+
+    assert.equal(html, '$-$R_{\\mu \\nu} - {1 \\over 2}g_{\\mu \\nu}\\,R + g_{\\mu \\nu} \\Lambda = {8 \\pi G \\over c^4} T_{\\mu \\nu}$-$');
+  });
+
 });
