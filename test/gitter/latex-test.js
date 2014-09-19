@@ -64,7 +64,8 @@ describe('latext', function() {
     var parser = new marked.Parser(options);
     var html = parser.parse(tokens);
 
-    assert.equal(html, '$-$R_{\\mu \\nu} - {1 \\over 2}g_{\\mu \\nu}\\,R + g_{\\mu \\nu} \\Lambda = {8 \\pi G \\over c^4} T_{\\mu \\nu}$-$');
+    var EXPECTED = '<p>$-$R_{\\mu \\nu} - {1 \\over 2}g_{\\mu \\nu}\\,R + g_{\\mu \\nu} \\Lambda = {8 \\pi G \\over c^4} T_{\\mu \\nu}$-$</p>';
+    assert.equal(html.trim(), EXPECTED.trim());
   });
 
 });
