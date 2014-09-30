@@ -28,6 +28,14 @@ describe('issues', function() {
     assert.equal('<h1 id="test12345">12345</h1>', gitterMarkdown("# 12345"));
   });
 
+  it('should treat issues at the start of a line as issues', function() {
+    assert.equal('<p><a href="#" data-link-type="issue" data-issue="#12345">#12345</a> something something something</p>', gitterMarkdown("#12345 something something something"));
+  });
+
+  it('should treat repo-refed issues at the start of a line as issues', function() {
+    assert.equal('<p><a href="#" data-link-type="issue" data-issue="moo/cow#12345" data-issue-repo="moo/cow">moo/cow#12345</a> something something something</p>', gitterMarkdown("moo/cow#12345 something something something"));
+  });
+
   it('should read simple issues', function() {
     var text = 'Deal with #123';
     var options = getDefaultOptions();
