@@ -15,7 +15,7 @@ function getDefaultOptions() {
 
 describe('groupmentions', function() {
   it('should deal with groupmentions followed by commas', function() {
-    var text = '@@all, how are you?';
+    var text = '@/all, how are you?';
     var options = getDefaultOptions();
 
     var lexer = new marked.Lexer(options);
@@ -25,7 +25,7 @@ describe('groupmentions', function() {
     renderer.groupmention = function(name, text) {
       mentions++;
       assert.equal(name, 'all');
-      assert.equal(text, '@@all');
+      assert.equal(text, '@/all');
     };
 
     var tokens = lexer.lex(text);
@@ -38,7 +38,7 @@ describe('groupmentions', function() {
   });
 
   it('should deal with text followed by groupmentions', function() {
-    var text = 'how are you @@all how are you?';
+    var text = 'how are you @/all how are you?';
     var options = getDefaultOptions();
 
     var lexer = new marked.Lexer(options);
@@ -48,7 +48,7 @@ describe('groupmentions', function() {
     renderer.groupmention = function(name, text) {
       mentions++;
       assert.equal(name, 'all');
-      assert.equal(text, '@@all');
+      assert.equal(text, '@/all');
     };
 
     var tokens = lexer.lex(text);
