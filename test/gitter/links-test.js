@@ -54,8 +54,8 @@ describe('links', function() {
   });
 
   it('should handle normal links', function() {
-    assert.equal('<p>Already linked: <a href=\"http://example.com/\">http://example.com/</a>.</p>',
-      gitterMarkdown('Already linked: [http://example.com/](http://example.com/).'));
+    assert.equal(gitterMarkdown('Already linked: [http://example.com/](http://example.com/).'),
+      '<p>Already linked: <a href=\"http://example.com/\">http://example.com/</a>.</p>');
   });
 
   it('should deal with wikipedia links that contain brackets', function() {
@@ -132,5 +132,54 @@ describe('links', function() {
 
     assert.equal(links, 2);
     // assert.equal(html, '<p>Deal with <a href="#" data-link-type="issue" data-issue="123" class="issue">#123</a></p>\n');
+  });
+
+  it('should linkify text', function() {
+    var parser = new marked.InlineLexer({}, {
+      renderer: {
+        text: function(text) {
+          return "<" + text + ">";
+        },
+        link: function(href) {
+          return "[" + href + "]";
+        }
+      }
+    });
+
+    assert.equal(parser.linkify('hello'), "<hello>");
+    assert.equal(parser.linkify('.'), "<.>");
+    assert.equal(parser.linkify('hello www.moo.com'), "<hello >[http://www.moo.com]");
+    assert.equal(parser.linkify('hello www.moo.com https://blah.co'), "<hello >[http://www.moo.com]< >[https://blah.co]");
+    assert.equal(parser.linkify('hello www.moo.com https://blah.co more'), "<hello >[http://www.moo.com]< >[https://blah.co]< more>");
+  });
+
+  it('should linkify naked urls correctly', function() {
+    var text = 'Go to www.moo.com to get your www.businesscards.com ya ya ya';
+    var options = getDefaultOptions();
+
+    var lexer = new marked.Lexer(options);
+    var links = 0;
+    var textCount = 0;
+    var renderer = new marked.Renderer();
+
+    renderer.link = function(href/*, title, text*/) {
+      links++;
+      return "[" + href + "]";
+    };
+
+    renderer.text = function(text) {
+      textCount++;
+      return "<" + text + ">";
+    };
+
+    var tokens = lexer.lex(text);
+    options.renderer = renderer;
+
+    var parser = new marked.Parser(options);
+    var output = parser.parse(tokens);
+
+    assert.equal(links, 2);
+    assert.equal(textCount, 3);
+    assert.equal(output.trim(), "<p><Go to >[http://www.moo.com]< to get your >[http://www.businesscards.com]< ya ya ya></p>");
   });
 });
