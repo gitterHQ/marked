@@ -182,4 +182,11 @@ describe('links', function() {
     assert.equal(textCount, 3);
     assert.equal(output.trim(), "<p><Go to >[http://www.moo.com]< to get your >[http://www.businesscards.com]< ya ya ya></p>");
   });
+
+  it('should render quoted naked links correctly', function() {
+    var md = gitterMarkdown('Go to "github.com/example/two" okay');
+
+    assert.equal('<p>Go to &quot;<a href="http://github.com/example/two&quot">github.com/example/two</a>&quot; okay</p>', md);
+
+  });
 });

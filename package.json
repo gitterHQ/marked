@@ -30,7 +30,7 @@
     "ansidiff": "~1.0.0"
   },
   "scripts": {
-    "test": "node test",
+    "test": "mocha test/gitter/ test/static.js -R spec",
     "bench": "node test --bench"
   },
   "dependencies": {}
