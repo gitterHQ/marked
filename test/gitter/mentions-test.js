@@ -38,4 +38,49 @@ describe('mentions', function() {
     // assert.equal(html, '<p>Deal with <a href="#" data-link-type="issue" data-issue="123" class="issue">#123</a></p>\n');
   });
 
+  it('should deal with numbers in usernames', function() {
+    var text = '@123456789, how are you?';
+    var options = getDefaultOptions();
+
+    var lexer = new marked.Lexer(options);
+    var mentions = 0;
+    var renderer = new marked.Renderer();
+
+    renderer.mention = function(href, title, text) {
+      mentions++;
+      assert.equal(href, '123456789');
+      assert.equal(text, '@123456789');
+    };
+
+    var tokens = lexer.lex(text);
+    options.renderer = renderer;
+
+    var parser = new marked.Parser(options);
+    var html = parser.parse(tokens);
+
+    assert.equal(mentions, 1);
+  });
+
+  it('should deal with underscores in usernames', function() {
+    var text = '@123456789_twitter, how are you?';
+    var options = getDefaultOptions();
+
+    var lexer = new marked.Lexer(options);
+    var mentions = 0;
+    var renderer = new marked.Renderer();
+
+    renderer.mention = function(href, title, text) {
+      mentions++;
+      assert.equal(href, '123456789_twitter');
+      assert.equal(text, '@123456789_twitter');
+    };
+
+    var tokens = lexer.lex(text);
+    options.renderer = renderer;
+
+    var parser = new marked.Parser(options);
+    var html = parser.parse(tokens);
+
+    assert.equal(mentions, 1);
+  });
 });
