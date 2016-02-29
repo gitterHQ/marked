@@ -23,7 +23,6 @@
   "devDependencies": {
     "markdown": "*",
     "showdown": "*",
-    "robotskirt": "*",
     "cli-color": "^0.3.2",
     "diff": "^1.0.8",
     "mocha": "^1.19.0",
