@@ -186,7 +186,7 @@ describe('links', function() {
   it('should render quoted naked links correctly', function() {
     var md = gitterMarkdown('Go to "github.com/example/two" okay');
 
-    assert.equal('<p>Go to &quot;<a href="http://github.com/example/two&quot">github.com/example/two</a>&quot; okay</p>', md);
+    assert.equal('<p>Go to &quot;<a href="http://github.com/example/two">github.com/example/two</a>&quot; okay</p>', md);
 
   });
 });
