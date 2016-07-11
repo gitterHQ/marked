@@ -9,3 +9,7 @@ _test_ __test__ _test_
 _a_ _b_
 
 *a* *b*
+
+\*foo *bar* and *baz*
+
+\_foo _bar_ and _baz_
