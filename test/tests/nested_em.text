@@ -3,3 +3,13 @@
 _test __test__ test_
 
 _test_ test _test_
+
+*test* test *test*
+
+_test_ __test__ _test_
+
+*test* **test** *test*
+
+_a_ _b_
+
+*a* *b*
