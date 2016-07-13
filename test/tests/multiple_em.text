@@ -1,0 +1,15 @@
+_test_ test _test_
+
+*test* test *test*
+
+_test_ __test__ _test_
+
+*test* **test** *test*
+
+_a_ _b_
+
+*a* *b*
+
+\*foo *bar* and *baz*
+
+\_foo _bar_ and _baz_
