@@ -2,7 +2,7 @@
   "name": "gitter-marked",
   "description": "A markdown parser built for speed",
   "author": "Christopher Jeffrey",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "main": "./lib/marked.js",
   "preferGlobal": false,
   "repository": "git://github.com/gitterHQ/marked.git",
